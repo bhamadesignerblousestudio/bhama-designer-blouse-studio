@@ -1,0 +1,45 @@
+{
+  "template_name": "Commerce Master Studio",
+  "version": "1.0",
+  "reference_implementation": "BHAMA Designer Blouse Studio",
+  "replace_for_each_new_brand": {
+    "brand": {
+      "name": "BHAMA",
+      "legal_or_display_name": "BHAMA Designer Blouse Studio",
+      "tagline": "Every Celebration Has a Bhama",
+      "logo": "assets/bhama-logo.png",
+      "primary_colors": [
+        "#2a0714",
+        "#500d27",
+        "#c9004f",
+        "#b98a47",
+        "#fffaf6"
+      ]
+    },
+    "contact": {
+      "whatsapp": "REPLACE_LATER",
+      "phone": "REPLACE_LATER",
+      "email": "REPLACE_LATER",
+      "instagram": "REPLACE_LATER",
+      "address": "REPLACE_LATER"
+    },
+    "commerce": {
+      "currency": "INR",
+      "guest_checkout": false,
+      "login_required_to_order": true,
+      "payments": [
+        "Razorpay_or_Cashfree"
+      ],
+      "shipping": [
+        "Shiprocket_or_equivalent"
+      ]
+    },
+    "backend": {
+      "custom_db_auth": "Supabase/Postgres",
+      "erp_crm": "ERPNext",
+      "automation": "n8n/server functions",
+      "whatsapp": "Meta Cloud API",
+      "media": "Cloudflare R2 or Supabase Storage"
+    }
+  }
+}
