@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BHAMA — Designer Blouse Studio</title>
+<meta name="description" content="BHAMA Designer Blouse Studio — premium bridal, festive, Aari and custom blouses.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Manrope:wght@300;400;500;600&display=swap');
+:root{
+ --wine:#2a0714;--wine2:#500d27;--berry:#c9004f;--rose:#f0b1c7;--ivory:#fffaf6;
+ --ink:#20161a;--muted:#806f75;--line:#ead9df;--gold:#b98a47;--white:#fff;
+ --shadow:0 28px 80px rgba(51,6,24,.16)
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--ivory);color:var(--ink);font-family:Manrope,system-ui,sans-serif}
+body.modal-open{overflow:hidden}
+img{display:block;width:100%}a{text-decoration:none;color:inherit}button{font:inherit}
+.shell{width:min(1320px,calc(100% - 34px));margin:auto}
+.ribbon{background:#18050c;color:#e9cbd5;text-align:center;padding:9px;font-size:8px;letter-spacing:.22em;text-transform:uppercase}
+header{position:sticky;top:0;z-index:80;background:rgba(255,250,246,.94);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+.nav{height:86px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px}
+.links{display:flex;gap:25px;font-size:9px;letter-spacing:.14em;text-transform:uppercase}
+.brand img{width:225px;height:68px;object-fit:contain}
+.right{display:flex;justify-content:flex-end;gap:9px}.round{width:40px;height:40px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;background:#fff}
+.cta{background:var(--wine);color:#fff;padding:13px 17px;font-size:8px;letter-spacing:.15em;text-transform:uppercase}
+
+.hero{display:grid;grid-template-columns:42% 58%;min-height:690px;background:#1b070f}
+.hero-copy{padding:85px max(4vw,calc((100vw - 1320px)/2)) 75px;display:flex;flex-direction:column;justify-content:center;color:#fff}
+.kicker{font-size:8px;letter-spacing:.3em;text-transform:uppercase;color:#edb3c8}
+.hero h1{font:400 clamp(58px,7vw,106px)/.87 Italiana,serif;margin:18px 0;color:#fff}
+.hero h1 em{color:#f2b9cd;font-style:italic}
+.hero p{max-width:460px;color:#dfc9d1;font-size:12px;line-height:1.9}
+.actions{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}.btn{padding:14px 19px;border:1px solid #ffffff5c;color:#fff;font-size:8px;letter-spacing:.15em;text-transform:uppercase}.btn.primary{background:#fff;color:#240711;border-color:#fff}
+.hero-img{position:relative;overflow:hidden}.hero-img img{height:100%;object-fit:cover;object-position:center}.hero-img:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(27,7,15,.24),transparent 35%)}
+.hero-note{position:absolute;right:24px;bottom:24px;color:#fff;border:1px solid #ffffff66;padding:14px 17px;font:22px Italiana;backdrop-filter:blur(10px)}
+
+.marquee{overflow:hidden;background:var(--berry);color:#fff;white-space:nowrap}
+.track{display:inline-block;padding:12px 0;animation:scroll 27s linear infinite;font-size:8px;letter-spacing:.22em;text-transform:uppercase}
+.track span{margin:0 30px}@keyframes scroll{to{transform:translateX(-50%)}}
+
+.section{padding:92px 0}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;margin-bottom:38px}
+.head h2{font:400 clamp(40px,5vw,70px)/.98 Italiana;color:var(--wine);margin:10px 0 0}
+.head p{max-width:450px;color:var(--muted);font-size:11px;line-height:1.85}
+
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.cat{position:relative;min-height:500px;overflow:hidden;background:#eadde0}
+.cat img{height:100%;object-fit:cover;transition:.7s}.cat:hover img{transform:scale(1.04)}
+.cat:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(25,2,9,.78),transparent 55%)}
+.catcopy{position:absolute;z-index:2;left:19px;bottom:20px;color:#fff}.catcopy span{font-size:7px;letter-spacing:.2em;text-transform:uppercase}.catcopy h3{font:400 29px Italiana;margin:7px 0}
+
+.craft{background:var(--wine);color:#fff}
+.craftgrid{display:grid;grid-template-columns:1.05fr .95fr;min-height:600px}
+.craftimg img{height:100%;object-fit:cover}.craftcopy{padding:75px;display:flex;flex-direction:column;justify-content:center}
+.craftcopy h2{font:400 clamp(46px,5vw,74px)/.98 Italiana;margin:14px 0}.craftcopy p{font-size:12px;line-height:1.9;color:#dec6cf}
+.quote{font:italic 28px Italiana;color:#f0b4c9;margin-top:22px}
+
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.product{background:#fff;border:1px solid var(--line);transition:.3s}.product:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.pimg{position:relative;aspect-ratio:4/5;overflow:hidden;cursor:pointer}.pimg img{height:100%;object-fit:cover;transition:.5s}.product:hover img{transform:scale(1.025)}
+.badge{position:absolute;left:10px;top:10px;background:#fff;color:var(--wine);padding:6px 8px;font-size:6px;letter-spacing:.14em;text-transform:uppercase}
+.hint{position:absolute;left:50%;bottom:13px;transform:translate(-50%,10px);opacity:0;background:#fffffff0;color:var(--wine);padding:8px 11px;font-size:7px;letter-spacing:.13em;text-transform:uppercase;transition:.3s;white-space:nowrap}.pimg:hover .hint{opacity:1;transform:translate(-50%,0)}
+.pinfo{padding:15px}.pinfo h3{font:400 21px Italiana;color:var(--wine);margin:0 0 6px}.pinfo p{font-size:9px;color:var(--muted);margin:0;line-height:1.5}.pinfo button{margin-top:12px;border:0;background:none;padding:0;color:var(--berry);font-size:8px;letter-spacing:.12em;text-transform:uppercase}
+
+.custom{padding:0 0 92px}.customgrid{display:grid;grid-template-columns:1fr 1fr;background:#f7e8ed;border:1px solid var(--line);min-height:520px}
+.customcopy{padding:68px}.customcopy h2{font:400 clamp(42px,5vw,68px)/1 Italiana;color:var(--wine);margin:13px 0}.customcopy p{font-size:11px;line-height:1.85;color:var(--muted)}
+.customimg img{height:100%;object-fit:cover}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:28px 0}.step{padding-top:13px;border-top:1px solid #caa4b1}.step b{font:400 25px Italiana;color:var(--berry)}.step span{display:block;font-size:8px;color:var(--muted);margin-top:5px}
+
+.fabric{background:#fff}.fabricgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:12px}.fabricgrid img{height:500px;object-fit:cover}
+.fabriccopy{padding:70px;background:#fff7f3;border:1px solid var(--line);display:flex;flex-direction:column;justify-content:center}.fabriccopy h2{font:400 56px/1 Italiana;color:var(--wine);margin:12px 0}.fabriccopy p{font-size:11px;color:var(--muted);line-height:1.85}
+
+footer{background:#16050c;color:#fff;padding:65px 0 22px}.foot{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:45px}.footlogo{width:230px;filter:brightness(0) invert(1);mix-blend-mode:screen}footer p,footer a{display:block;color:#d5bbc5;font-size:10px;line-height:1.9}footer h4{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:#f0b6ca}.copy{border-top:1px solid #ffffff18;margin-top:45px;padding-top:18px;text-align:center;font-size:7px;letter-spacing:.14em;color:#ab8e98}
+
+/* product popup */
+.modal{position:fixed;inset:0;z-index:200;display:none;background:rgba(10,2,6,.8);backdrop-filter:blur(14px);padding:24px}.modal.open{display:flex;align-items:center;justify-content:center}
+.panel{width:min(1180px,97vw);max-height:92vh;background:#fff;display:grid;grid-template-columns:1.35fr .8fr;overflow:hidden;box-shadow:0 35px 120px #0007}
+.gallery{background:#f2e9e7;padding:17px;display:grid;grid-template-columns:88px 1fr;gap:13px;min-height:640px}.thumbs{display:flex;flex-direction:column;gap:9px}.thumb{padding:0;border:1px solid transparent;background:#fff;position:relative;overflow:hidden}.thumb.active{border-color:var(--berry)}.thumb img{height:108px;object-fit:cover}.thumb small{position:absolute;left:4px;bottom:4px;background:#fff;padding:3px 4px;font-size:6px;text-transform:uppercase;letter-spacing:.08em}
+.mainview{position:relative;overflow:hidden}.mainview img{height:100%;object-fit:cover}.viewlabel{position:absolute;left:14px;top:14px;background:#fffffff0;padding:7px 10px;font-size:7px;letter-spacing:.13em;text-transform:uppercase;color:var(--wine)}
+.detail{position:relative;padding:45px 38px;overflow:auto}.close{position:absolute;right:16px;top:15px;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;background:#fff;font-size:19px}.detail h2{font:400 46px/1 Italiana;color:var(--wine);margin:14px 0 9px}.detail p{font-size:10px;color:var(--muted);line-height:1.8}.specs{margin:24px 0;border-top:1px solid var(--line)}.spec{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid var(--line);font-size:9px}.spec span{color:var(--muted)}
+.detailcta{display:block;background:var(--wine);color:#fff;padding:13px;text-align:center;font-size:8px;letter-spacing:.14em;text-transform:uppercase}
+
+@media(max-width:920px){.links{display:none}.nav{grid-template-columns:1fr auto}.brand{justify-self:start}.hero{grid-template-columns:1fr}.hero-copy{order:2}.hero-img{min-height:570px;order:1}.categories,.products{grid-template-columns:repeat(2,1fr)}.craftgrid,.customgrid,.fabricgrid{grid-template-columns:1fr}.craftcopy,.customcopy,.fabriccopy{padding:48px 27px}.foot{grid-template-columns:1fr 1fr}.panel{grid-template-columns:1fr;overflow:auto}.gallery{min-height:520px}.detail{padding:34px 24px}}
+@media(max-width:560px){.shell{width:calc(100% - 22px)}.nav{height:70px}.brand img{width:168px}.cta{display:none}.hero-img{min-height:460px}.hero-copy{padding:55px 22px}.hero h1{font-size:62px}.section{padding:66px 0}.head{display:block}.cat{min-height:390px}.products{gap:7px}.steps{grid-template-columns:1fr}.foot{grid-template-columns:1fr}.modal{padding:0}.panel{height:100vh;max-height:100vh;width:100vw}.gallery{grid-template-columns:1fr;grid-template-rows:1fr auto;padding:0}.mainview{grid-row:1}.thumbs{grid-row:2;display:grid;grid-template-columns:repeat(4,1fr);padding:8px}.thumb img{height:76px}}
+
+.packaging{display:grid;grid-template-columns:1.2fr .8fr;min-height:620px;background:#17070d;color:#fff}.packaging-media{min-height:620px;overflow:hidden}.packaging-media img{width:100%;height:100%;object-fit:cover;display:block}.packaging-copy{padding:8vw 7vw;display:flex;flex-direction:column;justify-content:center}.packaging-copy h2{font-family:Georgia,serif;font-size:clamp(42px,5vw,76px);font-weight:400;line-height:1.02;margin:18px 0 24px}.packaging-copy p{max-width:560px;line-height:1.8;color:#d8c7cd}.packaging-points{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}.packaging-points span{border:1px solid #704352;border-radius:999px;padding:10px 14px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}.product img,.collection-card img,.editorial img{transition:transform .5s ease}.product:hover img,.collection-card:hover img{transform:scale(1.025)}
+@media(max-width:780px){.packaging{grid-template-columns:1fr;min-height:auto}.packaging-media{min-height:360px}.packaging-copy{padding:56px 24px}.packaging-copy h2{font-size:42px}.modal .panel{width:96vw;max-height:92vh;overflow:auto}.gallery{min-width:0}.thumbs{gap:8px}.thumb{min-width:70px}}
+
+/* ===== BHAMA PREMIUM INTERFACE REFINEMENT ===== */
+:root{
+  --wine:#260611;
+  --wine2:#4b0b23;
+  --berry:#b90e4b;
+  --rose:#eeb5c9;
+  --ivory:#fffaf7;
+  --paper:#ffffff;
+  --ink:#24161c;
+  --muted:#806e76;
+  --line:rgba(74,20,40,.12);
+  --gold:#b69154;
+  --shadow-soft:0 18px 55px rgba(45,8,23,.08);
+  --shadow-luxe:0 32px 90px rgba(41,5,19,.16);
+}
+body{background:linear-gradient(180deg,#fffaf7 0%,#fff 42%,#fff9f5 100%);}
+.shell{width:min(1380px,calc(100% - 56px));}
+.ribbon{padding:10px 16px;background:#17040b;font-size:9px;letter-spacing:.24em}
+
+/* Premium, simple navigation */
+header{
+  background:rgba(255,250,247,.88);
+  backdrop-filter:blur(26px) saturate(1.3);
+  -webkit-backdrop-filter:blur(26px) saturate(1.3);
+  border-bottom:1px solid rgba(70,17,36,.08);
+}
+.nav{
+  height:112px;
+  grid-template-columns:1fr auto 1fr;
+  gap:28px;
+}
+.brand{display:flex;align-items:center;justify-content:center;}
+.brand img{
+  width:340px;
+  height:94px;
+  object-fit:contain;
+  transform:scale(1.03);
+}
+.links{gap:32px;font-size:9px;letter-spacing:.16em}
+.links a{position:relative;padding:10px 0;opacity:.82;transition:.25s}
+.links a:after{content:"";position:absolute;left:0;right:100%;bottom:3px;height:1px;background:var(--berry);transition:.25s}
+.links a:hover{opacity:1;color:var(--wine)}
+.links a:hover:after{right:0}
+.right{gap:10px;align-items:center}
+.round{
+  width:44px;height:44px;
+  border:1px solid rgba(77,20,40,.12);
+  box-shadow:0 6px 22px rgba(51,9,24,.05);
+}
+.cta{
+  border-radius:999px;
+  padding:14px 20px;
+  background:linear-gradient(135deg,#2a0714,#500d27);
+  box-shadow:0 12px 28px rgba(58,8,27,.18);
+}
+
+/* Cleaner luxury hero */
+.hero{
+  min-height:760px;
+  grid-template-columns:40% 60%;
+  background:
+    radial-gradient(circle at 25% 28%,rgba(185,138,71,.12),transparent 26%),
+    linear-gradient(135deg,#17040b,#2d0817 62%,#18050c);
+}
+.hero-copy{padding-top:110px;padding-bottom:100px}
+.hero h1{font-size:clamp(68px,7.4vw,112px);letter-spacing:-.025em}
+.hero p{font-size:13px;max-width:500px;color:#ead7de}
+.actions{gap:12px;margin-top:34px}
+.btn{border-radius:999px;padding:15px 22px}
+.btn.primary{box-shadow:0 10px 30px rgba(255,255,255,.12)}
+.hero-img:after{
+  background:
+    linear-gradient(90deg,rgba(23,4,11,.34),transparent 30%),
+    linear-gradient(0deg,rgba(20,4,10,.15),transparent 35%);
+}
+.hero-note{
+  right:34px;bottom:34px;
+  border-radius:999px;
+  padding:14px 20px;
+  font-size:20px;
+  background:rgba(25,5,13,.32);
+}
+
+/* Editorial sections */
+.section{padding:112px 0}
+.head{margin-bottom:48px}
+.head h2{font-size:clamp(46px,5.3vw,76px);letter-spacing:-.015em}
+.head p{font-size:12px;line-height:1.9}
+.kicker{font-size:9px;letter-spacing:.28em}
+
+/* Premium cards */
+.categories{gap:16px}
+.cat{
+  min-height:520px;
+  border-radius:22px;
+  box-shadow:var(--shadow-soft);
+  border:1px solid rgba(75,16,38,.07);
+}
+.cat img{transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .5s}
+.cat:hover img{transform:scale(1.035);filter:saturate(1.04)}
+.cat:after{background:linear-gradient(0deg,rgba(25,2,9,.82),transparent 58%)}
+.catcopy{left:24px;bottom:24px}
+.catcopy h3{font-size:31px}
+
+.craftgrid{min-height:650px}
+.craftimg{overflow:hidden}
+.craftcopy{padding:88px}
+.craftcopy p{font-size:13px;max-width:540px}
+.quote{font-size:30px}
+
+.products{gap:18px}
+.product{
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid rgba(76,20,40,.09);
+  box-shadow:0 8px 30px rgba(47,8,24,.045);
+}
+.product:hover{transform:translateY(-7px);box-shadow:var(--shadow-luxe)}
+.badge{left:14px;top:14px;border-radius:999px;padding:7px 10px}
+.hint{border-radius:999px;padding:9px 13px}
+.pinfo{padding:20px 20px 22px}
+.pinfo h3{font-size:24px}
+.pinfo p{font-size:10px}
+.pinfo button{margin-top:14px}
+
+.custom{padding-bottom:112px}
+.customgrid{
+  border-radius:26px;
+  overflow:hidden;
+  min-height:560px;
+  box-shadow:var(--shadow-soft);
+  border:1px solid rgba(75,16,38,.07);
+}
+.customcopy{padding:82px}
+.customcopy p{font-size:12px}
+.customcopy .cta{display:inline-flex;align-items:center;justify-content:center}
+
+.fabricgrid{gap:18px}
+.fabricgrid>img,.fabriccopy{
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:var(--shadow-soft);
+}
+.fabriccopy{padding:76px;border:1px solid rgba(75,16,38,.07)}
+.fabriccopy img{border-radius:16px}
+
+/* Lookbook styles were missing in the previous file */
+.collection-grid{
+  display:grid;
+  grid-template-columns:1.4fr .8fr .8fr;
+  gap:16px;
+}
+.collection-card{
+  position:relative;
+  min-height:560px;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:var(--shadow-soft);
+  background:#eadde0;
+}
+.collection-card.small{min-height:560px}
+.collection-card img{height:100%;object-fit:cover;transition:transform .75s}
+.collection-card:hover img{transform:scale(1.035)}
+.collection-card:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(27,4,12,.72),transparent 54%)}
+.collection-copy{position:absolute;left:24px;bottom:24px;z-index:2;color:#fff}
+.collection-copy span{font-size:8px;letter-spacing:.18em}
+.collection-copy h3{font:400 30px Italiana,serif;margin:6px 0 0}
+
+/* Packaging */
+.packaging{
+  width:min(1380px,calc(100% - 56px));
+  margin:0 auto 112px;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  min-height:600px;
+  border-radius:28px;
+  overflow:hidden;
+  background:linear-gradient(135deg,#250610,#450b21);
+  box-shadow:var(--shadow-luxe);
+}
+.packaging-media{min-height:600px}
+.packaging-media img{height:100%;object-fit:cover}
+.packaging-copy{
+  padding:86px 76px;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.packaging-copy h2{font:400 clamp(46px,5vw,72px)/.98 Italiana,serif;margin:16px 0}
+.packaging-copy p{color:#e5cfd7;font-size:12px;line-height:1.9;max-width:520px}
+.packaging-points{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}
+.packaging-points span{
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:999px;
+  padding:9px 12px;
+  font-size:7px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+/* Footer */
+footer{padding-top:76px}
+.footlogo{width:320px;max-width:100%;margin-bottom:14px}
+.foot{gap:54px}
+
+/* Product popup */
+.panel{border-radius:24px;box-shadow:0 40px 130px rgba(0,0,0,.45)}
+.gallery{background:#f6efed}
+.mainview,.thumb{border-radius:14px}
+.detail{padding:54px 44px}
+.close{cursor:pointer}
+.detailcta{border-radius:999px;margin-top:8px}
+
+/* Responsive */
+@media(max-width:1100px){
+  .brand img{width:290px}
+  .collection-grid{grid-template-columns:1.2fr 1fr}
+  .collection-card:last-child{grid-column:1/-1;min-height:420px}
+}
+@media(max-width:920px){
+  .shell{width:min(100% - 30px,1380px)}
+  .nav{height:98px;grid-template-columns:1fr auto}
+  .brand{justify-content:flex-start}
+  .brand img{width:285px;height:82px}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-img{min-height:620px}
+  .collection-grid{grid-template-columns:1fr 1fr}
+  .collection-card{min-height:470px}
+  .collection-card:first-child{grid-column:1/-1}
+  .packaging{width:calc(100% - 30px);grid-template-columns:1fr}
+  .packaging-media{min-height:520px}
+  .packaging-copy{padding:58px 40px}
+}
+@media(max-width:560px){
+  .shell{width:calc(100% - 22px)}
+  .ribbon{font-size:7px}
+  .nav{height:88px}
+  .brand img{width:230px;height:72px}
+  .hero-img{min-height:500px}
+  .hero-copy{padding:64px 22px 70px}
+  .hero h1{font-size:64px}
+  .section{padding:78px 0}
+  .categories{grid-template-columns:1fr}
+  .cat{min-height:470px}
+  .products{grid-template-columns:1fr}
+  .product{border-radius:18px}
+  .customcopy{padding:48px 26px}
+  .collection-grid{grid-template-columns:1fr}
+  .collection-card,.collection-card.small{min-height:440px}
+  .collection-card:first-child,.collection-card:last-child{grid-column:auto}
+  .packaging{width:calc(100% - 22px);margin-bottom:78px;border-radius:22px}
+  .packaging-media{min-height:430px}
+  .packaging-copy{padding:46px 26px}
+  .footlogo{width:280px}
+}
+
+
+/* ===== BHAMA FINAL LAYOUT CORRECTIONS — 2026-09-14 ===== */
+
+/* Header: logo remains unmistakably prominent */
+.nav{height:118px}
+.brand img{width:365px;height:102px;object-fit:contain}
+
+/* Hero is one complete visual story; products begin immediately after it */
+.hero{min-height:calc(100vh - 118px);max-height:900px}
+.hero-copy{padding-top:88px;padding-bottom:88px}
+.hero-img{min-height:620px}
+
+/* Remove excess vertical air across the page */
+.section{padding:72px 0}
+.section#shop{padding-top:58px;padding-bottom:74px}
+.head{margin-bottom:30px}
+.custom{padding:18px 0 72px}
+.fabric{padding-top:18px;padding-bottom:62px}
+#collections{padding-top:72px;padding-bottom:72px}
+#lookbook{padding-top:56px;padding-bottom:72px}
+
+/* Products: immediately under hero and visually dominant */
+#shop{background:linear-gradient(180deg,#fffaf7 0%,#ffffff 100%)}
+#shop .products{gap:16px}
+#shop .product{border-radius:18px}
+#shop .product>img{height:430px;object-fit:cover}
+#shop .pinfo{padding:17px 18px 20px}
+#shop .pinfo h3{font-size:25px}
+
+/* Craftsmanship: image gets substantially more space */
+.craft{padding:0}
+.craftgrid{
+  grid-template-columns:minmax(0,68%) minmax(0,32%);
+  min-height:650px;
+}
+.craftimg{min-height:650px}
+.craftimg img{width:100%;height:100%;object-fit:cover}
+.craftcopy{
+  padding:58px 42px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.craftcopy h2{font-size:clamp(46px,4.5vw,68px)}
+.craftcopy .quote{font-size:26px}
+
+/* Custom design: reduce copy panel, enlarge image panel */
+.customgrid{
+  grid-template-columns:minmax(0,38%) minmax(0,62%);
+  min-height:570px;
+}
+.customcopy{padding:58px 44px}
+.customimg{min-height:570px}
+.customimg img{width:100%;height:100%;object-fit:cover}
+
+/* Collections moved lower — consistent card proportions */
+.categories{gap:14px}
+.cat{min-height:500px}
+.cat img{height:100%;object-fit:cover}
+
+/* Fabric block — no oversized empty areas */
+.fabricgrid{
+  align-items:stretch;
+  gap:16px;
+}
+.fabricgrid>img{min-height:510px;height:100%;object-fit:cover}
+.fabriccopy{padding:54px}
+.fabriccopy img{height:165px!important;margin-top:18px!important}
+
+/* Lookbook: explicitly eliminate the large white gap seen before heading */
+#lookbook{margin-top:0}
+#lookbook .head{margin-top:0;margin-bottom:28px}
+.collection-grid{gap:14px}
+.collection-card,.collection-card.small{min-height:500px}
+
+/* Packaging follows naturally, without excessive separation */
+.packaging{margin-top:0;margin-bottom:72px;min-height:560px}
+.packaging-media{min-height:560px}
+.packaging-copy{padding:68px 58px}
+
+/* More consistent scroll composition */
+.craft,.custom,#collections,.fabric,#lookbook,.packaging{
+  scroll-margin-top:118px;
+}
+
+/* Tablet */
+@media(max-width:1100px){
+  .brand img{width:320px;height:92px}
+  .craftgrid{grid-template-columns:62% 38%}
+  .customgrid{grid-template-columns:42% 58%}
+  #shop .product>img{height:390px}
+}
+
+/* Mobile */
+@media(max-width:920px){
+  .nav{height:96px}
+  .brand img{width:285px;height:80px}
+  .hero{min-height:auto;max-height:none}
+  .hero-img{min-height:560px}
+  .craftgrid,.customgrid{grid-template-columns:1fr}
+  .craftimg{min-height:520px}
+  .craftcopy{padding:46px 30px}
+  .customimg{min-height:520px;order:1}
+  .customcopy{padding:46px 30px;order:2}
+  .section{padding:62px 0}
+  #shop .product>img{height:420px}
+}
+
+@media(max-width:560px){
+  .brand img{width:235px;height:70px}
+  .hero-img{min-height:470px}
+  .section{padding:52px 0}
+  .head{margin-bottom:24px}
+  #shop .product>img{height:auto;aspect-ratio:4/5}
+  .craftimg,.customimg{min-height:430px}
+  .craftcopy,.customcopy{padding:38px 24px}
+  .cat{min-height:430px}
+  .collection-card,.collection-card.small{min-height:430px}
+}
+
+</style>
+</head>
+<body>
+<div class="ribbon">BHAMA • DESIGNER BLOUSE STUDIO • WOMEN'S CELEBRATION WEAR</div>
+<header><div class="shell nav">
+ <nav class="links"><a href="#collections">Collections</a><a href="#shop">Blouses</a><a href="#custom">Custom Design</a></nav>
+ <a class="brand" href="#"><img loading="lazy" src="assets/bhama-logo.png" alt="BHAMA Designer Blouse Studio"></a>
+ <div class="right"><a class="round" href="#shop">⌕</a><a class="round" href="#shop">♡</a><a class="cta" href="#custom">Book Consultation</a></div>
+</div></header>
+
+<section class="hero">
+ <div class="hero-copy"><span class="kicker">The Celebration Atelier</span><h1>Every celebration<br><em>has a Bhama.</em></h1><p>Designer blouses crafted around your occasion, saree, silhouette and story — bridal, festive, Aari and custom creations.</p><div class="actions"><a class="btn primary" href="#shop">Explore Blouses</a><a class="btn" href="#custom">Design Yours</a></div></div>
+ <div class="hero-img"><img loading="lazy" src="assets/bhama-hero-main.png" alt="BHAMA bridal blouse"><div class="hero-note">Your style. Our craft.</div></div>
+</section>
+
+<section class="section" id="shop"><div class="shell">
+ <div class="head"><div><span class="kicker">Featured Collection</span><h2>Our Signature Blouses</h2></div><p>Discover BHAMA creations made for weddings, festivities and special celebrations.</p></div>
+ <div class="products" id="productGrid"></div>
+</div></section>
+
+<section class="craft"><div class="craftgrid">
+ <div class="craftimg"><img loading="lazy" src="assets/bhama-craftsmanship.png"></div>
+ <div class="craftcopy"><span class="kicker">Tradition • Craftsmanship • You</span><h2>Details that make the difference.</h2><p>From textile selection and embroidery to neckline shaping and hand finishing, BHAMA celebrates the detail behind every beautiful blouse.</p><div class="quote">More than just a blouse. It is an expression.</div></div>
+</div></section>
+
+<section class="custom" id="custom"><div class="shell">
+ <div class="customgrid">
+  <div class="customcopy"><span class="kicker">Custom Blouses</span><h2>Just for you.</h2><p>Share your saree, occasion and inspiration. We shape your neckline, sleeve, back and handwork into one complete BHAMA design.</p><div class="steps"><div class="step"><b>01</b><span>Share your saree & occasion</span></div><div class="step"><b>02</b><span>Choose your front, sleeve & back</span></div><div class="step"><b>03</b><span>Approve the craft & fit</span></div></div><a class="cta" href="https://wa.me/" target="_blank">Start on WhatsApp</a></div>
+  <div class="customimg"><img loading="lazy" src="assets/bhama-custom-blouse-consultation.png"></div>
+ </div>
+</div></section>
+
+<section class="section" id="collections"><div class="shell">
+ <div class="head"><div><span class="kicker">Our Collections</span><h2>Curated for every you.</h2></div><p>Bridal, festive, designer and Aari creations — curated for every celebration.</p></div>
+ <div class="categories">
+  <article class="cat"><img loading="lazy" src="assets/bhama-designer-blouse-fabrics.png"><div class="catcopy"><span>01</span><h3>Designer</h3></div></article>
+  <article class="cat"><img loading="lazy" src="assets/bhama-bridal-collection.png"><div class="catcopy"><span>02</span><h3>Bridal</h3></div></article>
+  <article class="cat"><img loading="lazy" src="assets/bhama-festive-collection.png"><div class="catcopy"><span>03</span><h3>Festive</h3></div></article>
+  <article class="cat"><img loading="lazy" src="assets/bhama-aari-handwork.png"><div class="catcopy"><span>04</span><h3>Aari & Handwork</h3></div></article>
+ </div>
+</div></section>
+
+<section class="section fabric"><div class="shell">
+ <div class="fabricgrid">
+  <img loading="lazy" src="assets/bhama-designer-blouse-fabrics.png">
+  <div class="fabriccopy"><span class="kicker">BHAMA Materials</span><h2>Colour. Texture. Craft.</h2><p>Rich festive shades, intricate embroidery and traditional fabric stories — selected to make the blouse the centre of the look.</p><img loading="lazy" src="assets/bhama-craftsmanship.png" style="margin-top:24px;height:190px;object-fit:cover"></div>
+ </div>
+</div></section>
+
+<section class="section" id="lookbook"><div class="shell">
+ <div class="head"><div><span class="kicker">BHAMA Lookbook</span><h2>Crafted to be remembered.</h2></div><p>A cinematic edit of colour, craft and celebration.</p></div>
+ <div class="collection-grid">
+  <article class="collection-card"><img loading="lazy" src="assets/bhama-hero-main.png"><div class="collection-copy"><span>01</span><h3>Studio Story</h3></div></article>
+  <article class="collection-card small"><img loading="lazy" src="assets/bhama-custom-blouse-consultation.png"><div class="collection-copy"><span>02</span><h3>Wear Your Story</h3></div></article>
+  <article class="collection-card small"><img loading="lazy" src="assets/bhama-designer-blouse-fabrics.png"><div class="collection-copy"><span>03</span><h3>Curated Craft</h3></div></article>
+ </div>
+</div></section>
+
+<section class="packaging" id="packaging">
+  <div class="packaging-media"><img loading="lazy" src="assets/bhama-packaging-box.png" alt="BHAMA premium packaging" loading="lazy"></div>
+  <div class="packaging-copy"><span class="kicker">The BHAMA Experience</span><h2>Beautifully made.<br>Beautifully packed.</h2><p>Every BHAMA creation is presented in our signature deep-wine packaging with refined gold detailing — designed to make the moment feel special before the blouse is even opened.</p><div class="packaging-points"><span>Signature Wine Box</span><span>Gold Foil Branding</span><span>Protective Premium Presentation</span></div></div>
+</section>
+
+<footer><div class="shell">
+ <div class="foot">
+  <div><img class="footlogo" src="assets/bhama-logo.png"><p>Designer blouses for weddings, celebrations and every beautiful moment.</p></div>
+  <div><h4>Collections</h4><a href="#shop">Designer</a><a href="#shop">Bridal</a><a href="#shop">Festive</a><a href="#shop">Aari & Handwork</a></div>
+  <div><h4>Studio</h4><a href="#custom">Custom Design</a><a href="#">Measurements</a><a href="#">Appointments</a></div>
+  <div><h4>Connect</h4><p>WhatsApp enquiries<br>Instagram<br>Studio appointments<br>Pan-India orders</p></div>
+ </div><div class="copy">© 2026 BHAMA — DESIGNER BLOUSE STUDIO • ALL RIGHTS RESERVED</div>
+</div></footer>
+
+<div class="modal" id="modal">
+ <div class="panel">
+  <div class="gallery"><div class="thumbs" id="thumbs"></div><div class="mainview"><img id="mainImg"><div class="viewlabel" id="viewLabel">Front View</div></div></div>
+  <div class="detail"><button class="close" onclick="closeModal()">×</button><span class="kicker" id="mTag"></span><h2 id="mTitle"></h2><p id="mDesc"></p><div class="specs" id="specs"></div><a class="detailcta" href="https://wa.me/" target="_blank">Request Custom Design</a></div>
+ </div>
+</div>
+
+<script>
+const products=[
+ {name:"Royal Magenta",tag:"BHAMA Product 01",desc:"Royal magenta couture with antique-gold floral handwork and pearl detailing.",views:[
+  ["Front","assets/product1_front.png"],["Side","assets/product1_side.png"],["Back","assets/product1_back.png"],["Detail","assets/product1_detail.png"]],specs:[["Occasion","Wedding / Reception"],["Fit","Made to measure"],["Work","Antique-gold handwork"],["Colour","Royal Magenta"]]},
+ {name:"Emerald Temple",tag:"BHAMA Product 02",desc:"Deep emerald silk with temple-inspired gold embroidery and statement sleeves.",views:[
+  ["Front","assets/bhama-emerald-front.png"],["Side","assets/bhama-emerald-side.png"],["Back","assets/bhama-emerald-back.png"],["Detail","assets/bhama-emerald-detail.png"]],specs:[["Occasion","Wedding / Festive"],["Fit","Custom"],["Work","Temple-inspired embroidery"],["Colour","Deep Emerald"]]},
+ {name:"Royal Lavender",tag:"BHAMA Product 03",desc:"Royal purple-lavender couture with fine silver-gold floral detailing and sheer embellished sleeves.",views:[
+  ["Front","assets/bhama-product2-front.png"],["Side","assets/bhama-product2-side.png"],["Back","assets/bhama-product2-back.png"],["Detail","assets/bhama-product2-detail.png"]],specs:[["Occasion","Engagement / Reception"],["Fit","Custom"],["Work","Fine floral embellishment"],["Colour","Royal Lavender"]]},
+ {name:"Ivory Ruby",tag:"BHAMA Product 04",desc:"Champagne ivory couture with antique-gold embroidery and refined ruby accents.",views:[
+  ["Front","assets/bhama-product3-front.png"],["Side","assets/bhama-product3-side.png"],["Back","assets/bhama-product3-back.png"],["Detail","assets/bhama-product3-detail.png"]],specs:[["Occasion","Wedding / Reception"],["Fit","Made to measure"],["Work","Gold embroidery + ruby accents"],["Colour","Ivory / Champagne"]]}
+];
+function render(){
+ document.getElementById("productGrid").innerHTML=products.map((p,i)=>`<article class="product"><div class="pimg" onclick="openModal(${i})"><img src="${p.views[0][1]}"><span class="badge">${p.tag}</span><span class="hint">Front • Side • Back • Detail</span></div><div class="pinfo"><h3>${p.name}</h3><p>BHAMA custom blouse • Enquire for price</p><button onclick="openModal(${i})">View All Angles →</button></div></article>`).join("");
+}
+function openModal(i){
+ const p=products[i];document.body.classList.add("modal-open");document.getElementById("modal").classList.add("open");
+ document.getElementById("mTag").textContent=p.tag;document.getElementById("mTitle").textContent=p.name;document.getElementById("mDesc").textContent=p.desc;
+ document.getElementById("specs").innerHTML=p.specs.map(s=>`<div class="spec"><span>${s[0]}</span><b>${s[1]}</b></div>`).join("");
+ document.getElementById("thumbs").innerHTML=p.views.map((v,n)=>`<button class="thumb ${n===0?'active':''}" onclick="setView('${v[1]}','${v[0]}',this)"><img src="${v[1]}"><small>${v[0]}</small></button>`).join("");
+ setView(p.views[0][1],p.views[0][0],document.querySelector(".thumb"));
+}
+function setView(src,label,el){document.getElementById("mainImg").src=src;document.getElementById("viewLabel").textContent=label+" View";document.querySelectorAll(".thumb").forEach(x=>x.classList.remove("active"));if(el)el.classList.add("active")}
+function closeModal(){document.body.classList.remove("modal-open");document.getElementById("modal").classList.remove("open")}
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeModal()});document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});render();
+</script>
+</body></html>
