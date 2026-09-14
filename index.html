@@ -464,6 +464,158 @@ footer{padding-top:76px}
   .collection-card,.collection-card.small{min-height:430px}
 }
 
+
+/* ===== BHAMA APPROVED FINAL PREMIUM FOOTER ===== */
+.bhama-final-footer{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 8%,rgba(151,28,66,.22),transparent 38%),
+    linear-gradient(135deg,#21020d 0%,#3b0719 48%,#21020d 100%);
+  color:#f7e8de;
+  padding:72px 7.5% 24px;
+  min-height:430px;
+  border-top:1px solid rgba(201,151,74,.35);
+}
+.footer-inner{
+  position:relative;z-index:2;
+  max-width:1440px;margin:0 auto;
+  display:grid;
+  grid-template-columns:1.15fr 2fr .72fr;
+  gap:64px;align-items:center;
+}
+.footer-brand-block{padding-right:36px;border-right:1px solid rgba(211,163,82,.34)}
+.footer-logo{
+  width:min(330px,100%);height:auto;display:block;
+  filter:sepia(1) saturate(.75) brightness(1.35);
+  margin-bottom:20px;
+}
+.footer-brand-block p{
+  margin:0;color:rgba(255,240,231,.83);font-size:14px;line-height:1.75;
+}
+.footer-socials{display:flex;gap:12px;margin-top:26px}
+.footer-socials a{
+  width:39px;height:39px;border:1px solid rgba(222,176,95,.78);
+  border-radius:50%;display:grid;place-items:center;color:#e8bb6c;
+  text-decoration:none;font:600 14px Arial;transition:.25s ease;
+}
+.footer-socials a:hover{background:rgba(224,177,94,.12);transform:translateY(-2px)}
+.footer-links-block{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.footer-col{min-height:168px;padding-right:20px;border-right:1px solid rgba(211,163,82,.27)}
+.footer-col:last-child{border-right:0}
+.footer-lotus{font-size:24px;color:#d6a756;margin-bottom:8px}
+.footer-col h4{
+  color:#f3d5bd;font:600 11px/1.2 Arial,sans-serif;
+  letter-spacing:.22em;margin:0 0 19px;
+}
+.footer-col a{
+  display:block;color:rgba(255,239,230,.84);text-decoration:none;
+  font:400 13px/1.75 Arial,sans-serif;transition:.2s ease;
+}
+.footer-col a:hover{color:#e6b86a;transform:translateX(2px)}
+.footer-story{text-align:center;position:relative;min-height:205px;display:flex;flex-direction:column;justify-content:center}
+.footer-story-mark{
+  position:absolute;inset:-50px 0 auto 0;
+  font:italic 700 160px/1 Georgia,serif;color:rgba(222,168,91,.055);
+  transform:rotate(-12deg);pointer-events:none;
+}
+.footer-script{
+  position:relative;color:#e4ad55;font:italic 36px/1.05 Georgia,serif;
+  transform:rotate(-4deg);text-shadow:0 2px 18px rgba(0,0,0,.25)
+}
+.footer-heart-line{display:flex;align-items:center;justify-content:center;gap:10px;color:#e8ba6c;margin-top:17px}
+.footer-heart-line span{width:43px;height:1px;background:rgba(231,183,103,.72)}
+.footer-bottom{
+  position:relative;z-index:2;max-width:1440px;margin:48px auto 0;
+  border-top:1px solid rgba(211,163,82,.35);padding-top:20px;
+  display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;
+  color:rgba(247,226,214,.65);font:500 9px/1.5 Arial,sans-serif;letter-spacing:.16em;
+  text-align:center;
+}
+.footer-crafted{color:rgba(247,226,214,.76);line-height:1.75}
+.footer-crafted b{color:#dba95d;font-size:12px}
+.footer-ornament{
+  position:absolute;z-index:1;top:0;bottom:0;width:220px;
+  color:#c58e43;opacity:.34;pointer-events:none;
+}
+.footer-ornament svg{width:100%;height:100%}
+.footer-ornament-left{left:-48px}
+.footer-ornament-right{right:-48px}
+.footer-watermark{
+  position:absolute;right:8%;top:2%;font:italic 700 210px/1 Georgia,serif;
+  color:rgba(222,168,91,.035);transform:rotate(-10deg);pointer-events:none;
+}
+@media(max-width:1000px){
+  .bhama-final-footer{padding:58px 6% 24px}
+  .footer-inner{grid-template-columns:1fr;gap:40px}
+  .footer-brand-block{border-right:0;border-bottom:1px solid rgba(211,163,82,.28);padding:0 0 32px}
+  .footer-story{min-height:130px}
+  .footer-links-block{gap:18px}
+}
+@media(max-width:620px){
+  .bhama-final-footer{padding:48px 24px 22px}
+  .footer-logo{width:270px}
+  .footer-links-block{grid-template-columns:1fr 1fr}
+  .footer-col{border-right:0;border-bottom:1px solid rgba(211,163,82,.2);padding-bottom:20px}
+  .footer-links-block .footer-col:last-child{grid-column:1/-1}
+  .footer-bottom{grid-template-columns:1fr;justify-items:center}
+  .footer-ornament{width:120px;opacity:.2}
+}
+
+
+/* ===== EXACT BHAMA FOOTER BRAND MARK FIX ===== */
+.footer-logo{
+  filter:none!important;
+  object-fit:contain;
+}
+.footer-watermark{display:none!important}
+.footer-story-mark{display:none!important}
+.footer-watermark-logo{
+  position:absolute;
+  right:5.5%;
+  top:5%;
+  width:260px;
+  height:auto;
+  opacity:.045;
+  transform:rotate(-8deg);
+  pointer-events:none;
+  z-index:1;
+}
+.footer-story-mark-logo{
+  position:absolute;
+  width:210px;
+  height:auto;
+  left:50%;
+  top:50%;
+  opacity:.045;
+  transform:translate(-50%,-58%) rotate(-7deg);
+  pointer-events:none;
+}
+.footer-heart-line{
+  margin-top:14px!important;
+  display:flex!important;
+  justify-content:center!important;
+}
+.footer-heart-line img{
+  width:105px;
+  height:auto;
+  object-fit:contain;
+  opacity:.95;
+}
+.footer-crafted-heart{
+  display:block;
+  width:86px;
+  height:auto;
+  object-fit:contain;
+  margin:4px auto 0;
+  opacity:.92;
+}
+@media(max-width:620px){
+  .footer-watermark-logo{width:175px;right:-15px;top:8%}
+  .footer-story-mark-logo{width:150px}
+  .footer-heart-line img{width:90px}
+}
+
 </style>
 </head>
 <body>
@@ -505,14 +657,6 @@ footer{padding-top:76px}
   <article class="cat"><img loading="lazy" src="assets/bhama-aari-handwork.png"><div class="catcopy"><span>04</span><h3>Aari & Handwork</h3></div></article>
  </div>
 </div></section>
-
-<section class="section fabric"><div class="shell">
- <div class="fabricgrid">
-  <img loading="lazy" src="assets/bhama-designer-blouse-fabrics.png">
-  <div class="fabriccopy"><span class="kicker">BHAMA Materials</span><h2>Colour. Texture. Craft.</h2><p>Rich festive shades, intricate embroidery and traditional fabric stories — selected to make the blouse the centre of the look.</p><img loading="lazy" src="assets/bhama-craftsmanship.png" style="margin-top:24px;height:190px;object-fit:cover"></div>
- </div>
-</div></section>
-
 <section class="section" id="lookbook"><div class="shell">
  <div class="head"><div><span class="kicker">BHAMA Lookbook</span><h2>Crafted to be remembered.</h2></div><p>A cinematic edit of colour, craft and celebration.</p></div>
  <div class="collection-grid">
@@ -527,14 +671,85 @@ footer{padding-top:76px}
   <div class="packaging-copy"><span class="kicker">The BHAMA Experience</span><h2>Beautifully made.<br>Beautifully packed.</h2><p>Every BHAMA creation is presented in our signature deep-wine packaging with refined gold detailing — designed to make the moment feel special before the blouse is even opened.</p><div class="packaging-points"><span>Signature Wine Box</span><span>Gold Foil Branding</span><span>Protective Premium Presentation</span></div></div>
 </section>
 
-<footer><div class="shell">
- <div class="foot">
-  <div><img class="footlogo" src="assets/bhama-logo.png"><p>Designer blouses for weddings, celebrations and every beautiful moment.</p></div>
-  <div><h4>Collections</h4><a href="#shop">Designer</a><a href="#shop">Bridal</a><a href="#shop">Festive</a><a href="#shop">Aari & Handwork</a></div>
-  <div><h4>Studio</h4><a href="#custom">Custom Design</a><a href="#">Measurements</a><a href="#">Appointments</a></div>
-  <div><h4>Connect</h4><p>WhatsApp enquiries<br>Instagram<br>Studio appointments<br>Pan-India orders</p></div>
- </div><div class="copy">© 2026 BHAMA — DESIGNER BLOUSE STUDIO • ALL RIGHTS RESERVED</div>
-</div></footer>
+
+<footer class="bhama-final-footer">
+  <div class="footer-ornament footer-ornament-left" aria-hidden="true">
+    <svg viewBox="0 0 260 420" preserveAspectRatio="none">
+      <g fill="none" stroke="currentColor" stroke-width="1.2" opacity=".72">
+        <path d="M12 8C92 38 92 104 24 132C104 148 112 224 35 252C122 272 108 352 18 410"/>
+        <path d="M24 58C66 50 94 67 105 100C68 102 40 90 24 58Z"/>
+        <path d="M30 151C78 137 116 158 123 196C76 199 45 184 30 151Z"/>
+        <path d="M35 263C88 248 125 272 128 311C80 313 49 297 35 263Z"/>
+        <path d="M18 342C66 327 101 346 110 382C67 386 36 372 18 342Z"/>
+      </g>
+    </svg>
+  </div>
+  <div class="footer-ornament footer-ornament-right" aria-hidden="true">
+    <svg viewBox="0 0 260 420" preserveAspectRatio="none">
+      <g fill="none" stroke="currentColor" stroke-width="1.2" opacity=".72">
+        <path d="M248 8C168 38 168 104 236 132C156 148 148 224 225 252C138 272 152 352 242 410"/>
+        <path d="M236 58C194 50 166 67 155 100C192 102 220 90 236 58Z"/>
+        <path d="M230 151C182 137 144 158 137 196C184 199 215 184 230 151Z"/>
+        <path d="M225 263C172 248 135 272 132 311C180 313 211 297 225 263Z"/>
+        <path d="M242 342C194 327 159 346 150 382C193 386 224 372 242 342Z"/>
+      </g>
+    </svg>
+  </div>
+
+  <img class="footer-watermark-logo" src="assets/bhama-logo-footer-gold.png" alt="" aria-hidden="true">
+
+  <div class="footer-inner">
+    <div class="footer-brand-block">
+      <img src="assets/bhama-logo-footer-gold.png" alt="BHAMA Designer Blouse Studio" class="footer-logo">
+      <p>Designer blouses for weddings, celebrations<br>and every beautiful moment.</p>
+      <div class="footer-socials" aria-label="Social links">
+        <a href="#" aria-label="Instagram">◎</a>
+        <a href="https://wa.me/" aria-label="WhatsApp">◉</a>
+        <a href="#" aria-label="YouTube">▶</a>
+        <a href="#" aria-label="Pinterest">P</a>
+      </div>
+    </div>
+
+    <div class="footer-links-block">
+      <div class="footer-col">
+        <div class="footer-lotus">♢</div>
+        <h4>COLLECTIONS</h4>
+        <a href="#collections">Designer</a>
+        <a href="#collections">Bridal</a>
+        <a href="#collections">Festive</a>
+        <a href="#collections">Aari &amp; Handwork</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-lotus">♢</div>
+        <h4>STUDIO</h4>
+        <a href="#custom">Custom Design</a>
+        <a href="#custom">Measurements</a>
+        <a href="#custom">Appointments</a>
+        <a href="#craft">Our Story</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-lotus">♢</div>
+        <h4>CONNECT</h4>
+        <a href="https://wa.me/">WhatsApp enquiries</a>
+        <a href="#">Instagram</a>
+        <a href="#custom">Studio appointments</a>
+        <a href="#shop">Pan-India orders</a>
+      </div>
+    </div>
+
+    <div class="footer-story">
+      <img class="footer-story-mark-logo" src="assets/bhama-logo-footer-gold.png" alt="" aria-hidden="true">
+      <div class="footer-script">Wear<br>your Story</div>
+      <div class="footer-heart-line"><img src="assets/bhama-heart-divider-gold.png" alt="" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>© 2026 BHAMA — DESIGNER BLOUSE STUDIO · ALL RIGHTS RESERVED</div>
+    <div class="footer-crafted">CRAFTED WITH LOVE<br>IN INDIA<br><img class="footer-crafted-heart" src="assets/bhama-heart-divider-gold.png" alt="" aria-hidden="true"></div>
+  </div>
+</footer>
+
 
 <div class="modal" id="modal">
  <div class="panel">
